@@ -1,0 +1,26 @@
+#include <iostream>
+using namespace std;
+
+// Recursive function to reduce a number to its digital root
+int recursiveDigitSum(string a) {
+    if (a.size() == 1) {
+        return a[0] - '0';  // Base case: single digit
+    } else {
+        int sum = 0;
+        for (int i = 0; i < a.size(); i++) {
+            sum += a[i] - '0';  // Convert each char to int and add
+        }
+        return recursiveDigitSum(to_string(sum));  // Recurse with new sum
+    }
+}
+
+int main() {
+    int c, k;
+    cin >> c >> k;
+
+    // Convert input number to string and compute recursive digit sum
+    int result = recursiveDigitSum(to_string(c));
+
+    // Multiply the result by k and print
+    cout << k * result << endl;
+}
