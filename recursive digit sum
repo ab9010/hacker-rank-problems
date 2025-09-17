@@ -1,16 +1,16 @@
 #include <iostream>
 using namespace std;
 
-// Recursive function to reduce a number to its digital root
+// Recursive digit sum function
 int recursiveDigitSum(string a) {
     if (a.size() == 1) {
-        return a[0] - '0';  // Base case: single digit
+        return a[0] - '0';
     } else {
         int sum = 0;
         for (int i = 0; i < a.size(); i++) {
-            sum += a[i] - '0';  // Convert each char to int and add
+            sum += a[i] - '0';
         }
-        return recursiveDigitSum(to_string(sum));  // Recurse with new sum
+        return recursiveDigitSum(to_string(sum));
     }
 }
 
@@ -18,9 +18,7 @@ int main() {
     int c, k;
     cin >> c >> k;
 
-    // Convert input number to string and compute recursive digit sum
-    int result = recursiveDigitSum(to_string(c));
-
-    // Multiply the result by k and print
-    cout << k * result << endl;
+    // Multiply first, then apply digit sum
+    int product = c * k;
+    cout << recursiveDigitSum(to_string(product)) << endl;
 }
